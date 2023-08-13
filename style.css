@@ -1,0 +1,28 @@
+body {
+    background-image: url(./images/wallpaper2.jpg);
+}
+
+
+.index h1 {
+    display: flex;
+    justify-content: center;
+    font-family: cursive;
+
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+
+.where {
+    display: flex;
+    justify-content: center;
+}
+
+.pokedex {
+    display: flex;
+    justify-content: center;
+}
