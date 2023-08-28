@@ -3,10 +3,35 @@ const URL = "https://pokeapi.co/api/v2/pokemon/"
 const browserInput = document.getElementById("browser");
 const pokedexContainer = document.getElementById("results");
 const btnBrowser = document.getElementById("btnBrowser");
+const myPokemons = document.getElementById("myPokemons");
+let results = [];
 
 btnBrowser.addEventListener('click', async() => {
     await searchPokemon();
 });
+
+window.onload = function() {
+    results = localStorage.getItem("results").split(",");
+    console.log(results);
+    addFromStorage("");
+};
+
+const addFromStorage = (value) => {
+    if(results.length >= 6) {
+        results.shift();
+    }
+    if(value !== "") {
+        results.push(value);
+    }
+    localStorage.setItem('results', results);
+    const container = document.createElement("div");
+    results.forEach(element => {
+        const myPokemonImg = document.createElement("img");
+        myPokemonImg.src = element;
+        container.appendChild(myPokemonImg);
+    });
+    myPokemons.replaceChildren(container);
+}
 
 const searchPokemon = async() => {
     const response = await fetch(URL + browserInput.value);
@@ -33,7 +58,7 @@ const pokemonToHTML = (info) => {
     pokemon.innerHTML = name;
     selectBtn.innerText = "elegir"
     selectBtn.addEventListener("click", () => {
-        localStorage.setItem(name, img);
+        addFromStorage(img);
     });
 
     newCard.appendChild(newImg);

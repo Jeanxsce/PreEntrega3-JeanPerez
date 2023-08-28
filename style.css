@@ -2,7 +2,6 @@ body {
     background-image: url(./images/wallpaper2.jpg);
 }
 
-
 .index h1 {
     display: flex;
     justify-content: center;
@@ -10,10 +9,16 @@ body {
 
 }
 
+.myPokemons {
+    display: flex;
+    justify-content: center;
+}
+
+
 .main {
     display: flex;
     justify-content: center;
-    padding-top: 40px;
+    
 }
 
 
